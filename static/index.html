@@ -9,6 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="/static/style.css" />
+    <link rel="stylesheet" href="/static/enhancements.css" />
   </head>
   <body>
     <main class="page-shell">
@@ -18,6 +19,7 @@
         <p class="eyebrow">LOCAL ACTION, LITTLE SPUD</p>
         <h1 id="page-title">Protestant<br /><em>Potato</em></h1>
         <p class="hero-copy">A cheerful little search engine for finding your next big-hearted community moment.</p>
+        <div class="hero-stickers" aria-hidden="true"><span>✦</span><span>♥</span><span>☀</span></div>
       </section>
       <section class="search-card" aria-label="Event search">
         <div class="tape tape-left" aria-hidden="true"></div><div class="tape tape-right" aria-hidden="true"></div>
@@ -25,6 +27,12 @@
         <form id="event-form">
           <div class="field-row"><label>City<input id="city" name="city" type="text" placeholder="e.g., Seattle" required /></label><label>State<input id="state" name="state" type="text" placeholder="e.g., WA" required /></label></div>
           <label>What kind of event?<input id="event_type" name="event_type" type="text" placeholder="Tree planting, ICE protest, civil rights…" required /></label>
+          <div class="suggestions" aria-label="Popular event types">
+            <span>Try a cause:</span>
+            <button class="suggestion" type="button" data-event="Tree planting">🌱 Tree planting</button>
+            <button class="suggestion" type="button" data-event="ICE protest">📣 ICE protest</button>
+            <button class="suggestion" type="button" data-event="Civil rights protest">✊ Civil rights</button>
+          </div>
           <label>Which day?<input id="day" name="day" type="date" required /></label>
           <button type="submit" id="search-button"><span>Find my people</span> <b>→</b></button>
         </form>

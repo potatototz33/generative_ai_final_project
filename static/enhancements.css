@@ -1,0 +1,11 @@
+.hero-stickers { position:absolute; right:8%; bottom:25px; display:flex; gap:12px; font-size:27px; transform:rotate(-8deg); }
+.hero-stickers span { display:grid; place-items:center; width:42px; height:42px; border:2px solid var(--ink); border-radius:50%; background:var(--paper); box-shadow:3px 3px 0 var(--ink); }
+.hero-stickers span:nth-child(1) { color:var(--coral); }.hero-stickers span:nth-child(2) { color:var(--teal); }.hero-stickers span:nth-child(3) { color:#e69b23; }
+.suggestions { display:flex; align-items:center; flex-wrap:wrap; gap:7px; font-size:.78rem; font-weight:800; color:var(--teal); }
+.suggestion { margin:0; padding:5px 8px; border:2px solid var(--ink); border-radius:999px; background:#dff5f3; color:var(--ink); box-shadow:2px 2px 0 var(--ink); font:700 .75rem Nunito,sans-serif; }
+.suggestion:hover { transform:translate(1px,1px); box-shadow:1px 1px 0 var(--ink); }
+.event-bubble { min-height:360px; overflow:hidden; padding:16px 18px 22px; }
+.event-image { height:108px; margin:-16px -18px 16px; border-bottom:3px solid var(--ink); display:grid; place-items:center; font-size:52px; background:linear-gradient(135deg,#89dce2,#dff8f5 55%,#ffd76a); }
+.event-bubble:nth-child(2) .event-image { background:linear-gradient(135deg,#ffd76a,#fff5c8 55%,#ff9b8f); }
+.event-bubble:nth-child(3) .event-image { background:linear-gradient(135deg,#98e0c9,#dff8f5 55%,#80cce8); }
+@media (max-width:680px) { .hero-stickers { right:4%; bottom:16px; } }
