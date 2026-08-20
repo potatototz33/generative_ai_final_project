@@ -22,21 +22,55 @@ files into `static/`.
 
 ## Setup
 
-1. Install the requirements:
+These steps take you from a fresh clone to a running app.
+
+1. **Clone the repo**
+
+   ```
+   git clone <your-repo-url>
+   cd pokedex-project
+   ```
+
+2. **Create a virtual environment** (recommended, keeps dependencies isolated)
+
+   ```
+   python3 -m venv venv
+   source venv/bin/activate      # on Windows: venv\Scripts\activate
+   ```
+
+3. **Install dependencies**
+
    ```
    pip install -r requirements.txt
    ```
-2. Copy `.env.example` to a new file named `.env` and paste in your real
-   OpenAI API key:
+
+4. **Set up your API key**
+
+   Copy the example env file and fill in your own key.
+
    ```
-   OPENAI_API_KEY=sk-...
+   cp .env.example .env
    ```
-3. Run the server:
+
+   Then open `.env` and replace the placeholder with your real OpenAI API key:
+
+   ```
+   OPENAI_API_KEY=sk-your-real-key-here
+   ```
+
+   You can get a key from https://platform.openai.com/api-keys. Never commit your
+   real `.env` file, it's already excluded in `.gitignore`
+
+
+5. **Run the app**
+
    ```
    python app.py
    ```
-4. Open `http://localhost:5000` in your browser, you'll see the
-   placeholder frontend load from `static/index.html`
+
+6. **Open it in your browser**
+
+   Go to http://localhost:5000
 
 ## Test the /chat route without a frontend
 
