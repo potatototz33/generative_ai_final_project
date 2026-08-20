@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Find inspiring local protests and civic events." />
+    <title>Protestant Potato — Find your people</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/static/style.css" />
+  </head>
+  <body>
+    <main class="page-shell">
+      <section class="hero" aria-labelledby="page-title">
+        <div class="sun-sticker" aria-hidden="true">✦</div>
+        <div class="potato-wrap" aria-hidden="true"><div class="potato-face"><span>•</span><span>•</span><b>⌣</b></div><span class="leaf leaf-one">♥</span><span class="leaf leaf-two">♥</span></div>
+        <p class="eyebrow">LOCAL ACTION, LITTLE SPUD</p>
+        <h1 id="page-title">Protestant<br /><em>Potato</em></h1>
+        <p class="hero-copy">A cheerful little search engine for finding your next big-hearted community moment.</p>
+      </section>
+      <section class="search-card" aria-label="Event search">
+        <div class="tape tape-left" aria-hidden="true"></div><div class="tape tape-right" aria-hidden="true"></div>
+        <h2>Where are we showing up?</h2>
+        <form id="event-form">
+          <div class="field-row"><label>City<input id="city" name="city" type="text" placeholder="e.g., Seattle" required /></label><label>State<input id="state" name="state" type="text" placeholder="e.g., WA" required /></label></div>
+          <label>What kind of event?<input id="event_type" name="event_type" type="text" placeholder="Tree planting, ICE protest, civil rights…" required /></label>
+          <label>Which day?<input id="day" name="day" type="date" required /></label>
+          <button type="submit" id="search-button"><span>Find my people</span> <b>→</b></button>
+        </form>
+        <p class="small-note">Real community gatherings, one hopeful search at a time. 🥔</p>
+      </section>
+      <section class="results" aria-live="polite" aria-labelledby="results-title">
+        <div class="results-heading"><div><p class="eyebrow">YOUR POSSIBILITIES</p><h2 id="results-title">Ready when you are.</h2></div><span class="sparkle" aria-hidden="true">✦</span></div>
+        <div id="status" class="status">Tell us what matters to you, and we’ll look for a good place to start.</div>
+        <div id="results-list" class="result-grid"></div>
+      </section>
+    </main>
+    <footer>Made for kind, courageous neighbors <span>♥</span></footer>
+    <script src="/static/script.js"></script>
+  </body>
+</html>
