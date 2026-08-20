@@ -4,9 +4,16 @@ Starter Backend for Your Final Project
 
 This file already does the boring plumbing for you:
   - starts a small web server (Flask)
+  - serves your frontend files straight out of the static/ folder
   - loads your OpenAI API key safely from a .env file
-  - lets your frontend talk to it without CORS errors
+  - already has a working OpenAI client set up and ready to use
   - has one route, /chat, that your frontend can send messages to
+
+IMPORTANT: Put ALL of your frontend files (index.html, style.css,
+script.js, images, everything) inside the static/ folder. This backend
+can only see and serve files that live in there. When you write your
+frontend prompt, tell your AI coding assistant to save its files into
+static/, not anywhere else.
 
 Right now, /chat just echoes back whatever you send it. That's on
 purpose. Your job is to use your BACKEND PROMPT (from your workbook)
@@ -19,26 +26,25 @@ HOW TO RUN THIS:
   2. pip install -r requirements.txt
   3. Copy .env.example to a new file named .env and paste in your real API key
   4. python app.py
-  5. Your server is now running at http://localhost:5000
+  5. Open http://localhost:5000 in your browser, your frontend will load
 
 HOW YOUR FRONTEND TALKS TO THIS:
-  Send a POST request to http://localhost:5000/chat with a JSON body
-  like {"message": "hello"}. You'll get back {"reply": "..."}.
+  Send a POST request to /chat with a JSON body like {"message": "hello"}.
+  You'll get back {"reply": "..."}.
 """
 
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 from dotenv import load_dotenv
+from openai import OpenAI
 import os
 
 load_dotenv()  # reads your .env file and loads OPENAI_API_KEY
 
-app = Flask(__name__)
-CORS(app)  # lets your frontend, running on a different port, talk to this server
+app = Flask(__name__, static_folder="static")
+CORS(app)  # harmless to leave on, useful if you ever run the frontend separately
 
-# TODO: import the OpenAI library and create your client here.
-# from openai import OpenAI
-# client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+client = OpenAI(api_key=os.environ.get("OPENAI_API_KEY"))
 
 
 @app.route("/chat", methods=["POST"])
@@ -51,9 +57,9 @@ def chat():
 
     # ------------------------------------------------------------
     # TODO: Replace this echo with a real call to the OpenAI API.
-    #
-    # Use YOUR system prompt and YOUR user prompt from your workbook.
-    # It should look something like this:
+    # The `client` object above is already set up, you just need to
+    # use it. Use YOUR system prompt and YOUR user prompt from your
+    # workbook. It should look something like this:
     #
     # response = client.chat.completions.create(
     #     model="gpt-4o-mini",
@@ -73,7 +79,8 @@ def chat():
 
 @app.route("/")
 def home():
-    return "Backend is running. Send a POST request to /chat to talk to it."
+    # Serves static/index.html, this is your frontend's entry point.
+    return app.send_static_file("index.html")
 
 
 if __name__ == "__main__":
